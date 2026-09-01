@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'API Documentation — DevKit Pro API',
-  description: 'REST API documentation for DevKit Pro. Access all 63 tools programmatically with batch processing and automation.',
+  description: 'REST API documentation for DevKit Pro. Access all 99 tools programmatically with batch processing and automation.',
   alternates: { canonical: '/api-docs/' },
 }
 

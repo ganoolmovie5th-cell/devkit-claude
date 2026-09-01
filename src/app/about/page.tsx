@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="max-w-2xl mx-auto prose prose-gray">
       <h1>About DevToolkit</h1>
       <p>
-        DevToolkit is a free collection of 22+ developer tools built for everyday coding tasks.
+        DevToolkit is a free collection of 99+ developer tools built for everyday coding tasks.
         Every tool runs entirely in your browser — no data is ever sent to a server.
       </p>
       <h2>Why DevToolkit?</h2>

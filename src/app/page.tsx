@@ -26,7 +26,7 @@ export default function HomePage() {
     <div>
       <section className="text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Free Online Developer Tools</h1>
-        <p className="mt-2 text-gray-500 dark:text-gray-400">79+ tools that run entirely in your browser. No data sent to any server.</p>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">{tools.length}+ tools that run entirely in your browser. No data sent to any server.</p>
         <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
           <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-[10px]">Ctrl+K</kbd> to search
         </p>
