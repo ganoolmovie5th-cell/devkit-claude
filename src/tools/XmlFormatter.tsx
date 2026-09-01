@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import CopyButton from '@/components/CopyButton'
+import ShareButton from '@/components/ShareButton'
+import { useShareParam } from '@/lib/useShareParam'
 
 function formatXml(xml: string): string {
   let formatted = ''
@@ -26,6 +28,10 @@ function minifyXml(xml: string): string {
 export default function XmlFormatter() {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
+  const shared = useShareParam()
+  const inputRef = useRef(input)
+  inputRef.current = input
+  useEffect(() => { if (shared) setInput(shared) }, [shared])
 
   const format = () => setOutput(formatXml(input))
   const minify = () => setOutput(minifyXml(input))
@@ -41,6 +47,7 @@ export default function XmlFormatter() {
       <div className="flex gap-2">
         <button onClick={format} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Format</button>
         <button onClick={minify} className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Minify</button>
+        <ShareButton getInput={() => inputRef.current} />
       </div>
       {output && (
         <div className="relative">
