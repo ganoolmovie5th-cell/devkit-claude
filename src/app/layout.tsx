@@ -11,6 +11,7 @@ import BackToTop from '@/components/BackToTop'
 import ScrollProgress from '@/components/ScrollProgress'
 import { ToastProvider } from '@/components/Toast'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'DevKit — Free Online Developer Tools',
@@ -32,36 +33,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KPV353KB');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563eb" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="apple-touch-icon" href="/icon-192.svg" />
         <link rel="alternate" type="application/rss+xml" title="DevKit Blog" href="/feed.xml" />
-        {/* Vercel Analytics */}
-        <script
-          defer
-          src="/_vercel/insights/script.js"
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7759392165776614"
-          crossOrigin="anonymous"
-        />
-        {/* AdSense Ad Blocker Recovery */}
-        <script async src="https://fundingchoicesmessages.google.com/i/pub-7759392165776614?ers=1" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){function signalGooglefcPresent(){if(!window.frames['googlefcPresent']){if(document.body){const iframe=document.createElement('iframe');iframe.style='width:0;height:0;border:none;z-index:-1000;left:-1000px;top:-1000px;';iframe.style.display='none';iframe.name='googlefcPresent';document.body.appendChild(iframe);}else{setTimeout(signalGooglefcPresent,0);}}}signalGooglefcPresent();})();`,
-          }}
-        />
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {/* Google Tag Manager (noscript) */}
@@ -84,6 +61,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </ToastProvider>
         <Analytics />
+
+        {/* Third-party scripts loaded after hydration to avoid DOM mutations
+            racing React and causing hydration mismatch (React #418). */}
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KPV353KB');`}
+        </Script>
+        <Script
+          id="adsbygoogle-init"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7759392165776614"
+          crossOrigin="anonymous"
+        />
+        <Script
+          id="funding-choices"
+          strategy="afterInteractive"
+          src="https://fundingchoicesmessages.google.com/i/pub-7759392165776614?ers=1"
+        />
+        <Script id="googlefc-present" strategy="afterInteractive">
+          {`(function(){function signalGooglefcPresent(){if(!window.frames['googlefcPresent']){if(document.body){const iframe=document.createElement('iframe');iframe.style='width:0;height:0;border:none;z-index:-1000;left:-1000px;top:-1000px;';iframe.style.display='none';iframe.name='googlefcPresent';document.body.appendChild(iframe);}else{setTimeout(signalGooglefcPresent,0);}}}signalGooglefcPresent();})();`}
+        </Script>
       </body>
     </html>
   )
