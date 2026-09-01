@@ -35,6 +35,23 @@ export default function ComparePage() {
           </Link>
         ))}
       </div>
+
+      <section className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 prose prose-sm prose-gray dark:prose-invert max-w-none">
+        <h2>How to use these comparisons</h2>
+        <p>
+          Picking between two formats or tools usually comes down to trade-offs rather than a clear
+          winner. These guides lay the options side by side — syntax, performance, readability, and the
+          situations each one fits — so you can decide based on your actual use case instead of a
+          gut feeling.
+        </p>
+        <p>
+          The data-format guides (JSON vs YAML, Base64 vs URL encoding) help when two systems expect
+          different shapes of the same data. The security guide (MD5 vs SHA-256) covers when a fast
+          checksum is fine and when you need a collision-resistant hash. The architecture and tooling
+          guides (REST vs GraphQL, CSS vs Tailwind, and the DevKit comparisons) weigh workflow and
+          maintenance cost. Each page ends with a plain recommendation.
+        </p>
+      </section>
     </div>
   )
 }

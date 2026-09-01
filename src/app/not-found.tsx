@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
 import { tools } from '@/tools/registry'
 
 function fuzzyMatch(path: string) {
@@ -25,6 +26,15 @@ function fuzzyMatch(path: string) {
 export default function NotFound() {
   const pathname = usePathname()
   const suggestions = fuzzyMatch(pathname)
+
+  // AdSense policy: no ads on error/404 screens. Pause auto-ad requests here.
+  useEffect(() => {
+    try {
+      const w = window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }
+      w.adsbygoogle = w.adsbygoogle || {}
+      w.adsbygoogle.pauseAdRequests = 1
+    } catch {}
+  }, [])
 
   const fallback = tools.filter(t =>
     ['json-formatter', 'base64-encode-decode', 'uuid-generator', 'regex-tester', 'password-generator', 'hash-generator'].includes(t.slug)

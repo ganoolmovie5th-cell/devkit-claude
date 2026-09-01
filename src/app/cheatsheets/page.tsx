@@ -31,6 +31,22 @@ export default function CheatSheetsPage() {
           </Link>
         ))}
       </div>
+
+      <section className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 prose prose-sm prose-gray dark:prose-invert max-w-none">
+        <h2>What are these cheat sheets for?</h2>
+        <p>
+          Each cheat sheet condenses the syntax you reach for most into a single searchable page, so
+          you can confirm a pattern or command without leaving your editor for long-form docs. They
+          cover regular expressions, cron scheduling, and Git — three areas where the exact syntax is
+          easy to forget and expensive to get wrong.
+        </p>
+        <p>
+          The regex sheet lists character classes, quantifiers, anchors, groups, and lookarounds with
+          examples. The cron sheet explains each field and the special characters used to build a
+          schedule. The Git sheet groups the everyday commands for branching, merging, stashing, and
+          undoing changes. All of them are free, need no account, and load instantly.
+        </p>
+      </section>
     </div>
   )
 }
