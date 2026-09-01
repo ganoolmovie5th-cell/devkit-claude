@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Developer Resources & Recommended Tools | DevKit',
   description: 'Curated list of developer tools, hosting, domains, and services we recommend for building web projects.',
+  alternates: { canonical: '/resources/' },
 }
 
 const categories = [

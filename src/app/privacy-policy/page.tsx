@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy — DevToolkit',
   description: 'Privacy policy for DevToolkit developer tools website.',
+  alternates: { canonical: '/privacy-policy/' },
 }
 
 export default function PrivacyPolicyPage() {

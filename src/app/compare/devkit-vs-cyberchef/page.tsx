@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'DevKit vs CyberChef — Which Tool Should You Use? | DevKit',
   description: 'Compare DevKit and CyberChef: use cases, interface, performance, and when to use each developer utility.',
+  alternates: { canonical: '/compare/devkit-vs-cyberchef/' },
   keywords: 'devkit vs cyberchef, cyberchef alternative, online developer tools comparison',
 }
 

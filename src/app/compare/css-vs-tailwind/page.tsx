@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'CSS vs Tailwind CSS — Styling Approaches Compared | DevKit',
   description: 'Compare vanilla CSS and Tailwind CSS: workflow, bundle size, maintainability, and when to use each approach.',
+  alternates: { canonical: '/compare/css-vs-tailwind/' },
   keywords: 'css vs tailwind, tailwind css comparison, utility css vs vanilla css',
 }
 

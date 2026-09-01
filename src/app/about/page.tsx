@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About — DevToolkit',
   description: 'DevToolkit is a collection of free online developer tools that run entirely in your browser.',
+  alternates: { canonical: '/about/' },
 }
 
 export default function AboutPage() {

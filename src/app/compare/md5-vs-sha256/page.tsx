@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'MD5 vs SHA-256 — Hash Algorithm Comparison | DevKit',
   description: 'Compare MD5 and SHA-256 hashing: security, speed, output length, and when to use each algorithm.',
+  alternates: { canonical: '/compare/md5-vs-sha256/' },
   keywords: 'md5 vs sha256, hash comparison, md5 sha256 difference',
 }
 

@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Mastering JSON: Format, Validate, and Debug Like a Pro | DevKit Blog',
   description: 'Learn how to work with JSON effectively — formatting, validation, common errors, and debugging techniques for API development.',
+  alternates: { canonical: '/blog/mastering-json-formatting/' },
   keywords: 'json formatting, json validation, json debugging, json tutorial',
 }
 

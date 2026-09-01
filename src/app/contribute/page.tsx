@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Contribute — Add Tools to DevKit | Open Source',
   description: 'Help build DevKit by contributing new tools, fixing bugs, improving docs, or suggesting features. Open source contribution guide.',
+  alternates: { canonical: '/contribute/' },
 }
 
 export default function ContributePage() {

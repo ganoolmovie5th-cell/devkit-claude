@@ -117,6 +117,26 @@ export default function WorkspacePage() {
           <ToolRenderer slug={currentTab.slug} />
         </div>
       )}
+
+      <section className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 prose prose-sm prose-gray dark:prose-invert max-w-none">
+        <h2>About the DevKit Workspace</h2>
+        <p>
+          The Workspace lets you open several DevKit tools at once and switch between them with tabs,
+          the same way you keep multiple files open in an editor. It is built for tasks that need more
+          than one utility — decode a token, reformat the payload, then hash a value without losing
+          your place.
+        </p>
+        <h2>How it works</h2>
+        <ol>
+          <li>Start with the default tab, or press <strong>+ Add Tool</strong> to open another tool.</li>
+          <li>Search for any of the 80+ DevKit tools and add it as a new tab.</li>
+          <li>Switch between tabs to move through your workflow; close a tab when you are done.</li>
+        </ol>
+        <p>
+          Every tool in the Workspace runs entirely in your browser. Nothing you type is uploaded, so
+          it is safe to work with tokens, keys, and other private data across tabs.
+        </p>
+      </section>
     </div>
   )
 }

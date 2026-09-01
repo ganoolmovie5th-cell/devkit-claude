@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'DevKit vs Transform.tools — Which Developer Toolkit to Use? | DevKit',
   description: 'Compare DevKit and Transform.tools: tool count, privacy, features, performance, and which is better for your workflow.',
   keywords: 'devkit vs transform tools, transform tools alternative, developer tools comparison',
+  alternates: { canonical: '/compare/devkit-vs-transform-tools/' },
 }
 
 export default function DevKitVsTransformTools() {

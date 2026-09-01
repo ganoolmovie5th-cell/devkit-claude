@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Regex for Developers: From Zero to Pattern Matching Hero | DevKit Blog',
   description: 'A practical regex guide covering character classes, quantifiers, groups, lookaheads, and real-world patterns every developer should know.',
+  alternates: { canonical: '/blog/regex-guide-for-developers/' },
   keywords: 'regex tutorial, regular expressions guide, regex for beginners, regex patterns',
 }
 

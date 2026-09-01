@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Changelog — DevKit',
   description: 'What\'s new in DevKit. Latest updates, new tools, and improvements.',
+  alternates: { canonical: '/changelog/' },
 }
 
 const entries = [

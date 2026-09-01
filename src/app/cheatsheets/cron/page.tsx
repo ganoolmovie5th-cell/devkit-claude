@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Cron Expression Cheat Sheet — Quick Reference | DevKit',
   description: 'Complete cron expression cheat sheet with field descriptions, special characters, and common scheduling examples for Linux crontab.',
+  alternates: { canonical: '/cheatsheets/cron/' },
   keywords: 'cron cheat sheet, crontab reference, cron expression examples',
 }
 

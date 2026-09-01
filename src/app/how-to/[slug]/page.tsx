@@ -7,13 +7,17 @@ export function generateStaticParams() {
   return tools.map(t => ({ slug: t.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const tool = getToolBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const tool = getToolBySlug(slug)
   if (!tool) return {}
   return {
     title: `How to Use ${tool.name} Online — Free Guide | DevKit`,
     description: `Learn how to use ${tool.name} online for free. Step-by-step guide with examples. No signup required, runs in your browser.`,
     keywords: [`how to ${tool.keywords[0]}`, `${tool.name} tutorial`, `${tool.name} guide`],
+    alternates: {
+      canonical: `/how-to/${slug}/`,
+    },
   }
 }
 
@@ -62,8 +66,9 @@ function getTips(slug: string): string[] {
   return tips
 }
 
-export default function HowToPage({ params }: { params: { slug: string } }) {
-  const tool = getToolBySlug(params.slug)
+export default async function HowToPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const tool = getToolBySlug(slug)
   if (!tool) notFound()
 
   const steps = getSteps(tool.slug, tool.name)

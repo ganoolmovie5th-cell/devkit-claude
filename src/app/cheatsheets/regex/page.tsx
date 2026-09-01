@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Regex Cheat Sheet — Quick Reference | DevKit',
   description: 'Complete regex cheat sheet with syntax, quantifiers, anchors, groups, lookaheads, and common patterns for JavaScript, Python, and Go.',
+  alternates: { canonical: '/cheatsheets/regex/' },
   keywords: 'regex cheat sheet, regular expression reference, regex patterns',
 }
 

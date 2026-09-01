@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: '5 CSS Generators Every Frontend Developer Needs | DevKit Blog',
   description: 'Stop writing CSS by hand for common patterns. Use these visual generators for gradients, shadows, flexbox, border-radius, and color palettes.',
+  alternates: { canonical: '/blog/css-generators-every-developer-needs/' },
   keywords: 'css generator, box shadow generator, gradient generator, flexbox generator, css tools',
 }
 

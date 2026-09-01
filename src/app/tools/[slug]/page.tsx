@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ToolRenderer from '@/tools/ToolRenderer'
 import RelatedTools from '@/components/RelatedTools'
+import ToolContent from '@/components/ToolContent'
 import ToolPageClient from '@/components/ToolPageClient'
 import OutputHistory from '@/components/OutputHistory'
 import EmbedWidget from '@/components/EmbedWidget'
@@ -15,13 +16,17 @@ export function generateStaticParams() {
   return tools.map(t => ({ slug: t.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const tool = getToolBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const tool = getToolBySlug(slug)
   if (!tool) return {}
   return {
     title: `${tool.name} — Free Online Tool | DevKit`,
     description: tool.description,
     keywords: tool.keywords.join(', '),
+    alternates: {
+      canonical: `/tools/${tool.slug}/`,
+    },
     openGraph: {
       title: `${tool.name} — Free Online Tool`,
       description: tool.description,
@@ -32,8 +37,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default function ToolPage({ params }: { params: { slug: string } }) {
-  const tool = getToolBySlug(params.slug)
+export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const tool = getToolBySlug(slug)
   if (!tool) notFound()
 
   const jsonLd = {
@@ -108,6 +114,7 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       <OutputHistory toolSlug={tool.slug} />
       <ToolRating slug={tool.slug} />
       <EmbedWidget slug={tool.slug} name={tool.name} />
+      <ToolContent tool={tool} />
       <RelatedTools current={tool.slug} />
     </div>
   )

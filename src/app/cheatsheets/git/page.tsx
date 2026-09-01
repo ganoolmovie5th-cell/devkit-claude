@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Git Cheat Sheet — Quick Reference | DevKit',
   description: 'Essential Git commands cheat sheet: init, clone, branch, merge, rebase, stash, log, reset, and remote operations.',
+  alternates: { canonical: '/cheatsheets/git/' },
   keywords: 'git cheat sheet, git commands, git reference',
 }
 

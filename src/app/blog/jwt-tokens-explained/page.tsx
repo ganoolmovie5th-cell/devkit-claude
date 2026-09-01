@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'JWT Tokens Explained: Decode, Validate, and Debug Like a Pro | DevKit Blog',
   description: 'Understand JSON Web Tokens from structure to security. Learn to decode, check expiry, spot common mistakes, and debug JWT authentication issues.',
+  alternates: { canonical: '/blog/jwt-tokens-explained/' },
   keywords: 'jwt explained, jwt tutorial, json web token guide, jwt authentication, jwt decode',
 }
 

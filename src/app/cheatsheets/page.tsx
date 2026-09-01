@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Developer Cheat Sheets — DevKit',
   description: 'Free developer cheat sheets for regex, cron expressions, Git commands, and more.',
+  alternates: { canonical: '/cheatsheets/' },
 }
 
 const sheets = [

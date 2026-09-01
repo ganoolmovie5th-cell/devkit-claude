@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Blog — Developer Tutorials & Guides | DevKit',
   description: 'In-depth tutorials on JSON handling, regex patterns, web security, and developer productivity.',
+  alternates: { canonical: '/blog/' },
 }
 
 const posts = [

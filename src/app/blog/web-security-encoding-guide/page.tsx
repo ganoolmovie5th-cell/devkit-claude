@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Web Security Encoding: Base64, URL, HTML Entities Explained | DevKit Blog',
   description: 'Understand when and why to encode data for the web — preventing XSS, handling URLs safely, and embedding binary content in text formats.',
+  alternates: { canonical: '/blog/web-security-encoding-guide/' },
   keywords: 'web encoding, base64 explained, url encoding, html entities, xss prevention',
 }
 

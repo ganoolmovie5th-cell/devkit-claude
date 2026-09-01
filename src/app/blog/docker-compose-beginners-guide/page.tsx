@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Docker Compose for Beginners: From docker run to docker-compose.yml | DevKit Blog',
   description: 'Learn how to convert docker run commands to docker-compose.yml files. Step-by-step guide with real examples for web developers.',
+  alternates: { canonical: '/blog/docker-compose-beginners-guide/' },
   keywords: 'docker compose tutorial, docker run to compose, docker compose beginners, docker compose guide',
 }
 

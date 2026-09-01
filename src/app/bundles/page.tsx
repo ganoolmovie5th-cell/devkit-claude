@@ -5,6 +5,7 @@ import { tools } from '@/tools/registry'
 export const metadata: Metadata = {
   title: 'Tool Bundles — Curated Developer Kits | DevKit',
   description: 'Curated collections of developer tools for frontend, backend, DevOps, and security workflows.',
+  alternates: { canonical: '/bundles/' },
 }
 
 const bundles = [

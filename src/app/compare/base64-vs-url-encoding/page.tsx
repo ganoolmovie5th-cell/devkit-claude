@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Base64 vs URL Encoding — What\'s the Difference? | DevKit',
   description: 'Compare Base64 encoding and URL encoding: purpose, output format, size overhead, and when to use each.',
+  alternates: { canonical: '/compare/base64-vs-url-encoding/' },
   keywords: 'base64 vs url encoding, percent encoding vs base64, encoding comparison',
 }
 

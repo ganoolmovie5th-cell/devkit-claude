@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'JSON vs YAML — Which Data Format to Use? | DevKit',
   description: 'Compare JSON and YAML formats: syntax, readability, use cases, performance, and when to choose each one.',
+  alternates: { canonical: '/compare/json-vs-yaml/' },
   keywords: 'json vs yaml, yaml vs json, data format comparison',
 }
 

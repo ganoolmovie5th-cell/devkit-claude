@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Developer Comparisons — DevKit',
   description: 'Side-by-side comparisons of encoding formats, data formats, and developer tools.',
+  alternates: { canonical: '/compare/' },
 }
 
 const comparisons = [

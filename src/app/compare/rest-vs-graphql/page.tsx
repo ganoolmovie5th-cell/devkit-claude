@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'REST vs GraphQL — API Design Comparison | DevKit',
   description: 'Compare REST and GraphQL APIs: architecture, flexibility, performance, caching, and when to choose each approach.',
+  alternates: { canonical: '/compare/rest-vs-graphql/' },
   keywords: 'rest vs graphql, api comparison, rest graphql difference',
 }
 
