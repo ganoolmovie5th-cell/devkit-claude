@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 }
 
 const endpoints = [
-  { method: 'POST', path: '/api/json/format', desc: 'Format and validate JSON', params: '{ "input": "..." }', response: '{ "output": "...", "valid": true }' },
-  { method: 'POST', path: '/api/json/minify', desc: 'Minify JSON', params: '{ "input": "..." }', response: '{ "output": "..." }' },
-  { method: 'POST', path: '/api/encode/base64', desc: 'Base64 encode/decode', params: '{ "input": "...", "action": "encode|decode" }', response: '{ "output": "..." }' },
-  { method: 'POST', path: '/api/encode/url', desc: 'URL encode/decode', params: '{ "input": "...", "action": "encode|decode" }', response: '{ "output": "..." }' },
-  { method: 'POST', path: '/api/hash', desc: 'Generate hashes', params: '{ "input": "...", "algorithms": ["sha256"] }', response: '{ "sha256": "..." }' },
-  { method: 'POST', path: '/api/generate/uuid', desc: 'Generate UUIDs', params: '{ "count": 5 }', response: '{ "uuids": ["..."] }' },
-  { method: 'POST', path: '/api/generate/password', desc: 'Generate passwords', params: '{ "length": 16, "symbols": true }', response: '{ "password": "..." }' },
-  { method: 'POST', path: '/api/convert/yaml-to-json', desc: 'YAML to JSON', params: '{ "input": "..." }', response: '{ "output": "..." }' },
-  { method: 'POST', path: '/api/convert/csv-to-json', desc: 'CSV to JSON', params: '{ "input": "..." }', response: '{ "output": [...] }' },
-  { method: 'POST', path: '/api/minify/css', desc: 'Minify CSS', params: '{ "input": "..." }', response: '{ "output": "...", "savings": "32%" }' },
+  { method: 'POST', path: '/v1/json/format', desc: 'Format and validate JSON', params: '{ "input": "..." }', response: '{ "output": "...", "valid": true }' },
+  { method: 'POST', path: '/v1/json/minify', desc: 'Minify JSON', params: '{ "input": "..." }', response: '{ "output": "..." }' },
+  { method: 'POST', path: '/v1/encode/base64', desc: 'Base64 encode/decode', params: '{ "input": "...", "action": "encode|decode" }', response: '{ "output": "..." }' },
+  { method: 'POST', path: '/v1/encode/url', desc: 'URL encode/decode', params: '{ "input": "...", "action": "encode|decode" }', response: '{ "output": "..." }' },
+  { method: 'POST', path: '/v1/hash', desc: 'Generate hashes', params: '{ "input": "...", "algorithms": ["sha256"] }', response: '{ "sha256": "..." }' },
+  { method: 'POST', path: '/v1/generate/uuid', desc: 'Generate UUIDs', params: '{ "count": 5 }', response: '{ "uuids": ["..."] }' },
+  { method: 'POST', path: '/v1/generate/password', desc: 'Generate passwords', params: '{ "length": 16, "symbols": true }', response: '{ "password": "..." }' },
+  { method: 'POST', path: '/v1/convert/yaml-to-json', desc: 'YAML to JSON', params: '{ "input": "..." }', response: '{ "output": "..." }' },
+  { method: 'POST', path: '/v1/convert/csv-to-json', desc: 'CSV to JSON', params: '{ "input": "..." }', response: '{ "output": [...] }' },
+  { method: 'POST', path: '/v1/minify/css', desc: 'Minify CSS', params: '{ "input": "..." }', response: '{ "output": "...", "savings": "32%" }' },
 ]
 
 export default function ApiDocsPage() {
