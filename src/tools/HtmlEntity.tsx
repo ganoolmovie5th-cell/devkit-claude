@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import CopyButton from '@/components/CopyButton'
 import ShareButton from '@/components/ShareButton'
+import SendToButton from '@/components/SendToButton'
 import { useShareParam } from '@/lib/useShareParam'
 
 function encodeEntities(str: string): string {
@@ -24,6 +25,8 @@ export default function HtmlEntity() {
   const shared = useShareParam()
   const inputRef = useRef(input)
   inputRef.current = input
+  const outputRef = useRef(output)
+  outputRef.current = output
   useEffect(() => { if (shared) setInput(shared) }, [shared])
 
   const encode = () => setOutput(encodeEntities(input))
@@ -43,9 +46,12 @@ export default function HtmlEntity() {
         <ShareButton getInput={() => inputRef.current} />
       </div>
       {output && (
-        <div className="relative">
-          <pre className="p-3 bg-gray-50 border border-gray-200 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap">{output}</pre>
-          <div className="absolute top-2 right-2"><CopyButton text={output} /></div>
+        <div className="space-y-2">
+          <div className="relative">
+            <pre className="p-3 bg-gray-50 border border-gray-200 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap">{output}</pre>
+            <div className="absolute top-2 right-2"><CopyButton text={output} /></div>
+          </div>
+          <SendToButton getOutput={() => outputRef.current} exclude="html-entity-encode-decode" />
         </div>
       )}
     </div>

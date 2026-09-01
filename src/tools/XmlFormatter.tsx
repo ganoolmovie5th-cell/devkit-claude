@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import CopyButton from '@/components/CopyButton'
 import ShareButton from '@/components/ShareButton'
+import SendToButton from '@/components/SendToButton'
 import { useShareParam } from '@/lib/useShareParam'
 
 function formatXml(xml: string): string {
@@ -31,6 +32,8 @@ export default function XmlFormatter() {
   const shared = useShareParam()
   const inputRef = useRef(input)
   inputRef.current = input
+  const outputRef = useRef(output)
+  outputRef.current = output
   useEffect(() => { if (shared) setInput(shared) }, [shared])
 
   const format = () => setOutput(formatXml(input))
@@ -50,9 +53,12 @@ export default function XmlFormatter() {
         <ShareButton getInput={() => inputRef.current} />
       </div>
       {output && (
-        <div className="relative">
-          <pre className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap">{output}</pre>
-          <div className="absolute top-2 right-2"><CopyButton text={output} /></div>
+        <div className="space-y-2">
+          <div className="relative">
+            <pre className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto max-h-96 whitespace-pre-wrap">{output}</pre>
+            <div className="absolute top-2 right-2"><CopyButton text={output} /></div>
+          </div>
+          <SendToButton getOutput={() => outputRef.current} exclude="xml-formatter" />
         </div>
       )}
     </div>
