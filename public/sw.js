@@ -1,9 +1,6 @@
-const CACHE_NAME = 'devkit-v2'
+const CACHE_NAME = 'devkit-v3'
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(['/']))
-  )
+self.addEventListener('install', () => {
   self.skipWaiting()
 })
 
@@ -18,35 +15,30 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const { request } = event
+
+  // Never intercept navigations — let the browser/CDN serve HTML directly.
+  // Intercepting document requests on a static-export site adds no value and
+  // risks turning a redirect/edge case into a broken page.
+  if (request.mode === 'navigate' || request.destination === 'document') return
+
   if (request.method !== 'GET') return
 
-  // Only handle same-origin requests. Let the browser deal with third-party
-  // requests (AdSense, analytics, fonts) directly — intercepting them adds no
-  // value and risks returning an invalid response.
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
 
+  // Cache-first for same-origin static assets only.
   event.respondWith(
-    fetch(request)
-      .then((response) => {
-        // Only cache successful, basic responses.
-        if (response && response.ok && response.type === 'basic') {
-          const clone = response.clone()
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
-        }
-        return response
-      })
-      .catch(async () => {
-        // Network failed — fall back to cache. respondWith() requires a
-        // Response, so never resolve to undefined.
-        const cached = await caches.match(request)
-        if (cached) return cached
-        // Last resort for navigations: serve the cached shell.
-        if (request.mode === 'navigate') {
-          const shell = await caches.match('/')
-          if (shell) return shell
-        }
-        return Response.error()
-      })
+    caches.match(request).then((cached) => {
+      if (cached) return cached
+      return fetch(request)
+        .then((response) => {
+          if (response && response.ok && response.type === 'basic') {
+            const clone = response.clone()
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
+          }
+          return response
+        })
+        .catch(() => cached || Response.error())
+    })
   )
 })
