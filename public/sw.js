@@ -1,4 +1,4 @@
-const CACHE_NAME = 'devkit-v3'
+const CACHE_NAME = 'devkit-v4'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
@@ -16,9 +16,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event
 
-  // Never intercept navigations — let the browser/CDN serve HTML directly.
-  // Intercepting document requests on a static-export site adds no value and
-  // risks turning a redirect/edge case into a broken page.
+  // Never intercept navigations — let the browser/CDN serve fresh HTML.
   if (request.mode === 'navigate' || request.destination === 'document') return
 
   if (request.method !== 'GET') return
@@ -26,19 +24,18 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
 
-  // Cache-first for same-origin static assets only.
+  // Network-first for same-origin static assets: always try the latest build,
+  // fall back to cache only when offline. Prevents stale JS chunks after a
+  // deploy (which caused "Tool not found" for newly added tools).
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached
-      return fetch(request)
-        .then((response) => {
-          if (response && response.ok && response.type === 'basic') {
-            const clone = response.clone()
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
-          }
-          return response
-        })
-        .catch(() => cached || Response.error())
-    })
+    fetch(request)
+      .then((response) => {
+        if (response && response.ok && response.type === 'basic') {
+          const clone = response.clone()
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
+        }
+        return response
+      })
+      .catch(async () => (await caches.match(request)) || Response.error())
   )
 })
