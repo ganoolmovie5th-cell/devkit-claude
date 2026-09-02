@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { tools } from '@/tools/registry'
 import ToolCard from '@/components/ToolCard'
 import FavoritesBar from '@/components/FavoritesBar'
@@ -69,6 +70,21 @@ export default function HomePage() {
       {filtered.length === 0 && (
         <p className="text-center text-gray-400 mt-8">No tools found.</p>
       )}
+
+      <section className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Browse by category</h2>
+        <div className="flex flex-wrap gap-2">
+          {categories.filter(c => c !== 'All').map(cat => (
+            <Link
+              key={cat}
+              href={`/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
+              className="text-sm px-3 py-1.5 border border-gray-200 dark:border-gray-700 rounded-full text-gray-600 dark:text-gray-400 hover:border-blue-300 dark:hover:border-blue-600 transition-colors"
+            >
+              {cat}
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   )
 }

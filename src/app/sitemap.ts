@@ -4,6 +4,7 @@ import { tools } from '@/tools/registry'
 export const dynamic = 'force-static'
 
 const BASE = 'https://www.devkit.web.id'
+const categorySlugs = Array.from(new Set(tools.map(t => t.category))).map(c => c.toLowerCase().replace(/\s+/g, '-'))
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolPages = tools.map(t => ({
@@ -65,6 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/resources/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/privacy-policy/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
+    ...categorySlugs.map(s => ({
+      url: `${BASE}/category/${s}/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
     ...toolPages,
     ...howToPages,
   ]

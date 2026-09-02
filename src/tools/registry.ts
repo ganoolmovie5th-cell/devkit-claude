@@ -133,6 +133,14 @@ export const tools: ToolMeta[] = [
   { slug: 'css-grid-generator', name: 'CSS Grid Generator', description: 'Build CSS grid layouts visually with live preview.', category: 'Generator', keywords: ['css grid generator', 'grid layout builder', 'grid template'] },
   { slug: 'timezone-converter', name: 'Timezone Converter', description: 'Convert a time across major world timezones with DST support.', category: 'Converter', keywords: ['timezone converter', 'time zone convert', 'world clock'] },
   { slug: 'color-blindness-simulator', name: 'Color Blindness Simulator', description: 'Preview how a color looks under common color-vision deficiencies.', category: 'Tester', keywords: ['color blindness simulator', 'colorblind check', 'accessibility color'] },
+  { slug: 'json-to-go', name: 'JSON to Go Struct', description: 'Generate Go structs with JSON tags from sample JSON.', category: 'Generator', keywords: ['json to go', 'json to struct', 'go struct generator'] },
+  { slug: 'json-to-python', name: 'JSON to Python', description: 'Generate Python dataclasses from sample JSON.', category: 'Generator', keywords: ['json to python', 'json to dataclass', 'python class generator'] },
+  { slug: 'json-to-rust', name: 'JSON to Rust Struct', description: 'Generate serde-annotated Rust structs from sample JSON.', category: 'Generator', keywords: ['json to rust', 'rust struct generator', 'serde struct'] },
+  { slug: 'json-to-jsonschema', name: 'JSON to JSON Schema', description: 'Infer a Draft-07 JSON Schema from a sample JSON document.', category: 'Generator', keywords: ['json to json schema', 'generate json schema', 'json schema inference'] },
+  { slug: 'diff-3way', name: '3-Way Diff', description: 'Compare two versions against a common base and spot merge conflicts.', category: 'Tester', keywords: ['3 way diff', 'three way merge', 'merge conflict viewer'] },
+  { slug: 'sql-explain-formatter', name: 'SQL EXPLAIN Formatter', description: 'Format EXPLAIN plans as an indented tree and flag costly operations.', category: 'Formatter', keywords: ['explain formatter', 'sql query plan', 'explain analyze'] },
+  { slug: 'avatar-generator', name: 'Avatar Generator', description: 'Generate initials avatars with deterministic colors from a name.', category: 'Generator', keywords: ['avatar generator', 'initials avatar', 'placeholder avatar'] },
+  { slug: 'api-mock-generator', name: 'API Mock Data Generator', description: 'Generate realistic mock JSON data from field names for API testing.', category: 'Generator', keywords: ['mock data generator', 'fake json', 'api mock data'] },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

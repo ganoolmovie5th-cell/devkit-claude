@@ -12,6 +12,7 @@ import ScrollProgress from '@/components/ScrollProgress'
 import { ToastProvider } from '@/components/Toast'
 import { Analytics } from '@vercel/analytics/next'
 import ThirdPartyScripts from '@/components/ThirdPartyScripts'
+import PwaPrompt from '@/components/PwaPrompt'
 
 export const metadata: Metadata = {
   title: 'DevKit — Free Online Developer Tools',
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Confetti />
           <ScrollProgress />
           <BackToTop />
+          <PwaPrompt />
           <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
             {children}
           </main>

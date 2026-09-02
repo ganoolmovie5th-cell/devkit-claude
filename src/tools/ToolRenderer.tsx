@@ -129,6 +129,14 @@ const toolComponents: Record<string, React.ComponentType> = {
   'css-grid-generator': dynamic(() => import('./CssGridGenerator')),
   'timezone-converter': dynamic(() => import('./TimezoneConverter')),
   'color-blindness-simulator': dynamic(() => import('./ColorBlindness')),
+  'json-to-go': dynamic(() => import('./JsonToGo')),
+  'json-to-python': dynamic(() => import('./JsonToPython')),
+  'json-to-rust': dynamic(() => import('./JsonToRust')),
+  'json-to-jsonschema': dynamic(() => import('./JsonToJsonSchema')),
+  'diff-3way': dynamic(() => import('./Diff3Way')),
+  'sql-explain-formatter': dynamic(() => import('./SqlExplainFormatter')),
+  'avatar-generator': dynamic(() => import('./AvatarGenerator')),
+  'api-mock-generator': dynamic(() => import('./ApiMockGenerator')),
 }
 
 export default function ToolRenderer({ slug }: { slug: string }) {
