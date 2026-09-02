@@ -137,6 +137,15 @@ const toolComponents: Record<string, React.ComponentType> = {
   'sql-explain-formatter': dynamic(() => import('./SqlExplainFormatter')),
   'avatar-generator': dynamic(() => import('./AvatarGenerator')),
   'api-mock-generator': dynamic(() => import('./ApiMockGenerator')),
+  'semver-calculator': dynamic(() => import('./SemverCalculator')),
+  'graphql-formatter': dynamic(() => import('./GraphqlFormatter')),
+  'editorconfig-generator': dynamic(() => import('./EditorconfigGenerator')),
+  'dockerfile-linter': dynamic(() => import('./DockerfileLinter')),
+  'jwk-to-pem': dynamic(() => import('./JwkToPem')),
+  'protobuf-decoder': dynamic(() => import('./ProtobufDecoder')),
+  'asn1-parser': dynamic(() => import('./Asn1Parser')),
+  'webauthn-tester': dynamic(() => import('./WebauthnTester')),
+  'cron-aws-eventbridge': dynamic(() => import('./CronAwsEventbridge')),
 }
 
 export default function ToolRenderer({ slug }: { slug: string }) {

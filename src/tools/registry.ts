@@ -141,6 +141,15 @@ export const tools: ToolMeta[] = [
   { slug: 'sql-explain-formatter', name: 'SQL EXPLAIN Formatter', description: 'Format EXPLAIN plans as an indented tree and flag costly operations.', category: 'Formatter', keywords: ['explain formatter', 'sql query plan', 'explain analyze'] },
   { slug: 'avatar-generator', name: 'Avatar Generator', description: 'Generate initials avatars with deterministic colors from a name.', category: 'Generator', keywords: ['avatar generator', 'initials avatar', 'placeholder avatar'] },
   { slug: 'api-mock-generator', name: 'API Mock Data Generator', description: 'Generate realistic mock JSON data from field names for API testing.', category: 'Generator', keywords: ['mock data generator', 'fake json', 'api mock data'] },
+  { slug: 'semver-calculator', name: 'Semver Calculator', description: 'Bump and compare semantic versions (major/minor/patch).', category: 'Calculator', keywords: ['semver calculator', 'version bump', 'compare versions'] },
+  { slug: 'graphql-formatter', name: 'GraphQL Formatter', description: 'Format and indent GraphQL queries, mutations, and schemas.', category: 'Formatter', keywords: ['graphql formatter', 'graphql beautifier', 'format graphql'] },
+  { slug: 'editorconfig-generator', name: '.editorconfig Generator', description: 'Generate an .editorconfig file with your indentation and formatting rules.', category: 'Generator', keywords: ['editorconfig generator', 'editorconfig file', 'editor config'] },
+  { slug: 'dockerfile-linter', name: 'Dockerfile Linter', description: 'Check a Dockerfile for best-practice issues like unpinned tags and root user.', category: 'Tester', keywords: ['dockerfile linter', 'dockerfile best practices', 'hadolint online'] },
+  { slug: 'jwk-to-pem', name: 'JWK to PEM', description: 'Convert RSA and EC JSON Web Keys to PEM format in your browser.', category: 'Crypto', keywords: ['jwk to pem', 'jwk converter', 'json web key to pem'] },
+  { slug: 'protobuf-decoder', name: 'Protobuf Decoder', description: 'Decode raw protobuf wire data without a .proto schema.', category: 'Decoder', keywords: ['protobuf decoder', 'decode protobuf', 'protobuf wire format'] },
+  { slug: 'asn1-parser', name: 'ASN.1 / DER Parser', description: 'Parse DER-encoded ASN.1 (certificates, keys) into a readable tree.', category: 'Tester', keywords: ['asn1 parser', 'der decoder', 'certificate parser'] },
+  { slug: 'webauthn-tester', name: 'WebAuthn Tester', description: 'Check WebAuthn support and run a passkey registration ceremony.', category: 'Tester', keywords: ['webauthn tester', 'passkey test', 'fido2 test'] },
+  { slug: 'cron-aws-eventbridge', name: 'Cron to AWS EventBridge', description: 'Convert a Unix cron expression to AWS EventBridge cron syntax.', category: 'Converter', keywords: ['cron to aws', 'eventbridge cron', 'aws cron converter'] },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

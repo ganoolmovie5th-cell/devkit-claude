@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { tools } from '@/tools/registry'
 import ToolCard from '@/components/ToolCard'
 import FavoritesBar from '@/components/FavoritesBar'
+import { fuzzyFilter } from '@/lib/fuzzy'
 
 export default function HomePage() {
   const [search, setSearch] = useState('')
@@ -15,13 +16,10 @@ export default function HomePage() {
     return ['All', ...cats.sort()]
   }, [])
 
-  const filtered = tools.filter(t => {
-    const matchSearch = t.name.toLowerCase().includes(search.toLowerCase()) ||
-      t.category.toLowerCase().includes(search.toLowerCase()) ||
-      t.keywords.some(k => k.toLowerCase().includes(search.toLowerCase()))
-    const matchCat = category === 'All' || t.category === category
-    return matchSearch && matchCat
-  })
+  const filtered = useMemo(() => {
+    const byCat = category === 'All' ? tools : tools.filter(t => t.category === category)
+    return fuzzyFilter(search, byCat, t => `${t.name}|${t.category}|${t.keywords.join(' ')}`)
+  }, [search, category])
 
   return (
     <div>

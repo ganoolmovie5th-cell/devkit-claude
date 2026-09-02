@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { tools } from '@/tools/registry'
+import { fuzzyFilter } from '@/lib/fuzzy'
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false)
@@ -11,12 +12,10 @@ export default function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
-  const filtered = query
-    ? tools.filter(t =>
-        t.name.toLowerCase().includes(query.toLowerCase()) ||
-        t.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
-      ).slice(0, 8)
-    : tools.slice(0, 8)
+  const filtered = (query
+    ? fuzzyFilter(query, tools, t => `${t.name}|${t.keywords.join(' ')}`)
+    : tools
+  ).slice(0, 8)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
