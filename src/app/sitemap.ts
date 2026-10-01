@@ -24,6 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = [
     'mastering-json-formatting', 'regex-guide-for-developers', 'web-security-encoding-guide',
     'jwt-tokens-explained', 'docker-compose-beginners-guide', 'css-generators-every-developer-needs',
+    'understanding-unix-file-permissions', 'bcrypt-vs-sha256-for-passwords', 'uuid-vs-auto-increment-ids',
+    'regex-cheatsheet-common-patterns', 'css-flexbox-complete-guide', 'how-css-gradients-work',
+    'mastering-css-box-shadow', 'favicon-sizes-and-formats-explained', 'yaml-vs-json-for-config',
+    'cron-scheduling-explained', 'http-status-codes-guide', 'common-csv-parsing-pitfalls',
   ].map(slug => ({
     url: `${BASE}/blog/${slug}/`,
     lastModified: new Date(),

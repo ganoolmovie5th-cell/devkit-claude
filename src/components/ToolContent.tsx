@@ -1,9 +1,10 @@
 import { ToolMeta } from '@/tools/registry'
+import { toolContent } from '@/content/tool-content'
 
 // Publisher content rendered beneath each tool. Turns an otherwise
-// interactive-only screen into a page with real, indexable text so it
-// carries genuine value for visitors (and satisfies ad-placement policy
-// that ads must sit alongside meaningful content).
+// interactive-only screen into a page with real, indexable text. Tools with a
+// hand-written entry in src/content/tool-content get unique long-form content;
+// the rest fall back to a category-aware template.
 
 function categoryIntro(category: string, name: string): string {
   switch (category) {
@@ -29,11 +30,10 @@ function categoryIntro(category: string, name: string): string {
   }
 }
 
-export default function ToolContent({ tool }: { tool: ToolMeta }) {
+function GenericContent({ tool }: { tool: ToolMeta }) {
   const primaryKeyword = tool.keywords[0] ?? tool.name.toLowerCase()
-
   return (
-    <section className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 prose prose-sm prose-gray dark:prose-invert max-w-none">
+    <>
       <h2>About {tool.name}</h2>
       <p>{categoryIntro(tool.category, tool.name)}</p>
       <p>
@@ -52,10 +52,7 @@ export default function ToolContent({ tool }: { tool: ToolMeta }) {
 
       <h2>Frequently asked questions</h2>
       <h3>Is {tool.name} free?</h3>
-      <p>
-        Yes. {tool.name} is completely free with no account required and no usage limits. It is
-        supported by non-intrusive ads placed around this written content.
-      </p>
+      <p>Yes. {tool.name} is completely free with no account required and no usage limits.</p>
       <h3>Is my data private?</h3>
       <p>
         Yes. All processing happens locally in your browser. Your input never leaves your device, so
@@ -71,6 +68,15 @@ export default function ToolContent({ tool }: { tool: ToolMeta }) {
         Anyone searching for a reliable {primaryKeyword}. Developers, students, and technical writers
         use it daily as part of their workflow.
       </p>
+    </>
+  )
+}
+
+export default function ToolContent({ tool }: { tool: ToolMeta }) {
+  const article = toolContent[tool.slug]
+  return (
+    <section className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 prose prose-gray dark:prose-invert max-w-none">
+      {article ? article.body : <GenericContent tool={tool} />}
     </section>
   )
 }
