@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — DevToolkit',
-  description: 'Privacy policy for DevToolkit developer tools website.',
+  title: 'Privacy Policy — DevKit',
+  description: 'Privacy policy for DevKit developer tools website.',
   alternates: { canonical: '/privacy-policy/' },
 }
 
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
 
       <h2>Overview</h2>
       <p>
-        DevToolkit is committed to protecting your privacy. All developer tools on this site
+        DevKit is committed to protecting your privacy. All developer tools on this site
         run entirely in your web browser. No input data is transmitted to any server.
       </p>
 
@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
       <h2>Contact</h2>
       <p>
         Questions about this policy? Open an issue on our{' '}
-        <a href="https://github.com/ganoolmovie5th-cell/dev-tools-claude" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/ganoolmovie5th-cell/devkit-claude" target="_blank" rel="noopener noreferrer">
           GitHub repository
         </a>.
       </p>

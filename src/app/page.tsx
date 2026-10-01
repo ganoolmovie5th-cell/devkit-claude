@@ -83,6 +83,48 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <section className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 max-w-3xl text-gray-600 dark:text-gray-400 leading-relaxed">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Developer tools that run in your browser</h2>
+        <p className="mt-3">
+          DevKit is a set of {tools.length}+ utilities for the small, repetitive jobs that fill a
+          developer&apos;s day: formatting a minified JSON response, decoding a JWT to inspect its
+          claims, generating UUIDs or a secure password, converting a timestamp, testing a regular
+          expression, or diffing two blocks of text. Each tool does one thing and does it without a
+          server round-trip.
+        </p>
+        <p className="mt-3">
+          Everything runs client-side. When you paste data into a formatter or a decoder, that data
+          is processed by JavaScript in your own browser and never uploaded. That makes DevKit safe
+          to use with sensitive material — API keys, access tokens, internal payloads — that you
+          would not want to send to an unknown backend. It also means the tools keep working offline
+          once the page has loaded.
+        </p>
+
+        <h3 className="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Common questions</h3>
+        <div className="mt-3 space-y-4">
+          <div>
+            <h4 className="font-medium text-gray-900 dark:text-white">Is DevKit free?</h4>
+            <p className="mt-1">Yes. Every tool is free to use with no signup, no account, and no usage limits.</p>
+          </div>
+          <div>
+            <h4 className="font-medium text-gray-900 dark:text-white">Is my data sent anywhere?</h4>
+            <p className="mt-1">No. All processing happens locally in your browser. Nothing you type or paste is transmitted to a server.</p>
+          </div>
+          <div>
+            <h4 className="font-medium text-gray-900 dark:text-white">Do I need to install anything?</h4>
+            <p className="mt-1">No. DevKit works directly in the browser. You can optionally install it as a PWA for one-click access and offline use.</p>
+          </div>
+          <div>
+            <h4 className="font-medium text-gray-900 dark:text-white">Which tools are available?</h4>
+            <p className="mt-1">
+              Formatters, encoders and decoders, generators, converters, calculators, and testers
+              across {categories.length - 1} categories. Use the search box above or press Ctrl+K to
+              jump to any tool.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

@@ -16,14 +16,14 @@ import PwaPrompt from '@/components/PwaPrompt'
 
 export const metadata: Metadata = {
   title: 'DevKit — Free Online Developer Tools',
-  description: 'Collection of 99+ free online developer tools: JSON formatter, Base64 encoder, UUID generator, regex tester, and more. All tools run client-side.',
+  description: 'Collection of 145+ free online developer tools: JSON formatter, Base64 encoder, UUID generator, regex tester, and more. All tools run client-side.',
   metadataBase: new URL('https://www.devkit.web.id'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'DevKit — Free Online Developer Tools',
-    description: '99+ free developer tools that run entirely in your browser.',
+    description: '145+ free developer tools that run entirely in your browser.',
     url: 'https://www.devkit.web.id',
     siteName: 'DevKit',
     type: 'website',

@@ -13,7 +13,6 @@ export default function Footer() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="https://github.com/ganoolmovie5th-cell/dev-tools-claude/issues/new?title=Tool+Suggestion:+" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 dark:hover:text-gray-200">Suggest a Tool</a>
             <Link href="/changelog" className="hover:text-gray-700 dark:hover:text-gray-200">Changelog</Link>
-            <Link href="/pro" className="hover:text-gray-700 dark:hover:text-gray-200">Pro</Link>
             <Link href="/resources" className="hover:text-gray-700 dark:hover:text-gray-200">Resources</Link>
             <Link href="/privacy-policy" className="hover:text-gray-700 dark:hover:text-gray-200">Privacy</Link>
             <Link href="/about" className="hover:text-gray-700 dark:hover:text-gray-200">About</Link>

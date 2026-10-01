@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'DevKit Pro — Bulk Operations & API Access',
   description: 'Upgrade to DevKit Pro for bulk processing, API access, no ads, and priority features.',
   alternates: { canonical: '/pro/' },
+  robots: { index: false, follow: true },
 }
 
 const features = [
