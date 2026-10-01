@@ -4,7 +4,10 @@ import { useState } from 'react'
 import CopyButton from '@/components/CopyButton'
 
 function hexToRgb(hex: string): [number, number, number] | null {
-  const m = hex.replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i)
+  let h = hex.replace('#', '')
+  // Expand 3-digit shorthand (#abc -> #aabbcc).
+  if (/^[0-9a-f]{3}$/i.test(h)) h = h.split('').map(c => c + c).join('')
+  const m = h.match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i)
   return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : null
 }
 

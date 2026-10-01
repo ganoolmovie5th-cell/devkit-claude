@@ -6,7 +6,10 @@ import CopyButton from '@/components/CopyButton'
 function decodeJwtPart(part: string): string {
   try {
     const padded = part.replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - part.length % 4) % 4)
-    return JSON.stringify(JSON.parse(atob(padded)), null, 2)
+    // UTF-8 aware base64 decode so multibyte claims aren't garbled.
+    const bytes = Uint8Array.from(atob(padded), c => c.charCodeAt(0))
+    const json = new TextDecoder().decode(bytes)
+    return JSON.stringify(JSON.parse(json), null, 2)
   } catch {
     return 'Invalid'
   }

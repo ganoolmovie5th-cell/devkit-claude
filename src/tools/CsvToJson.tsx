@@ -3,14 +3,42 @@
 import { useState } from 'react'
 import CopyButton from '@/components/CopyButton'
 
+// RFC 4180-style parser: handles quoted fields with commas, newlines, and
+// escaped quotes (""), plus CRLF line endings.
+function parseCsv(csv: string): string[][] {
+  const rows: string[][] = []
+  let row: string[] = []
+  let field = ''
+  let inQuotes = false
+  for (let i = 0; i < csv.length; i++) {
+    const c = csv[i]
+    if (inQuotes) {
+      if (c === '"') {
+        if (csv[i + 1] === '"') { field += '"'; i++ }
+        else inQuotes = false
+      } else field += c
+    } else if (c === '"') {
+      inQuotes = true
+    } else if (c === ',') {
+      row.push(field); field = ''
+    } else if (c === '\n' || c === '\r') {
+      if (c === '\r' && csv[i + 1] === '\n') i++
+      row.push(field); field = ''
+      rows.push(row); row = []
+    } else field += c
+  }
+  if (field !== '' || row.length > 0) { row.push(field); rows.push(row) }
+  // Drop trailing empty row from a final newline.
+  return rows.filter(r => !(r.length === 1 && r[0] === ''))
+}
+
 function csvToJson(csv: string): string {
-  const lines = csv.trim().split('\n')
-  if (lines.length < 2) throw new Error('Need at least a header row and one data row')
-  const headers = lines[0].split(',').map(h => h.trim().replace(/^["']|["']$/g, ''))
-  const result = lines.slice(1).map(line => {
-    const values = line.split(',').map(v => v.trim().replace(/^["']|["']$/g, ''))
+  const rows = parseCsv(csv.trim())
+  if (rows.length < 2) throw new Error('Need at least a header row and one data row')
+  const headers = rows[0]
+  const result = rows.slice(1).map(values => {
     const obj: Record<string, string> = {}
-    headers.forEach((h, i) => { obj[h] = values[i] || '' })
+    headers.forEach((h, i) => { obj[h] = values[i] ?? '' })
     return obj
   })
   return JSON.stringify(result, null, 2)

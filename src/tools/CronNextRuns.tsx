@@ -11,12 +11,15 @@ function parseField(field: string, min: number, max: number): Set<number> {
     let range = part
     const slash = part.split('/')
     if (slash.length === 2) { range = slash[0]; step = Number(slash[1]) }
+    if (!Number.isInteger(step) || step < 1) throw new Error(`Invalid step "/${slash[1]}" (must be an integer >= 1)`)
     let lo = min, hi = max
     if (range !== '*') {
       const dash = range.split('-')
       lo = Number(dash[0])
       hi = dash.length === 2 ? Number(dash[1]) : lo
     }
+    if (!Number.isInteger(lo) || !Number.isInteger(hi) || lo < min || hi > max || lo > hi)
+      throw new Error(`Field value out of range (${min}-${max}): "${part}"`)
     for (let v = lo; v <= hi; v += step) out.add(v)
   }
   return out
@@ -32,6 +35,14 @@ function nextRuns(expr: string, count: number): Date[] {
     parseField(parts[3], 1, 12),
     parseField(parts[4], 0, 6),
   ]
+  // POSIX: when both day-of-month and day-of-week are restricted (neither "*"),
+  // a run matches if EITHER matches. Otherwise the restricted one applies.
+  const domRestricted = parts[2] !== '*'
+  const dowRestricted = parts[4] !== '*'
+  const dayMatches = (date: number, day: number) => {
+    if (domRestricted && dowRestricted) return dom.has(date) || dow.has(day)
+    return dom.has(date) && dow.has(day)
+  }
   const runs: Date[] = []
   const d = new Date()
   d.setSeconds(0, 0)
@@ -43,8 +54,7 @@ function nextRuns(expr: string, count: number): Date[] {
       min.has(d.getMinutes()) &&
       hr.has(d.getHours()) &&
       mon.has(d.getMonth() + 1) &&
-      dom.has(d.getDate()) &&
-      dow.has(d.getDay())
+      dayMatches(d.getDate(), d.getDay())
     ) {
       runs.push(new Date(d))
     }

@@ -10,11 +10,17 @@ export default function NumberBaseConverter() {
 
   let decimal = 0
   let valid = false
-  try {
-    decimal = parseInt(input, base)
-    valid = !isNaN(decimal) && input.trim() !== ''
-    if (!valid) throw new Error()
-  } catch { /* ignore */ }
+  const trimmed = input.trim()
+  if (trimmed !== '') {
+    // Reject any digit not valid for the chosen base (parseInt silently
+    // truncates on the first invalid char otherwise).
+    const digits = '0123456789abcdefghijklmnopqrstuvwxyz'.slice(0, base)
+    const allowed = new RegExp(`^[+-]?[${digits}]+$`, 'i')
+    if (allowed.test(trimmed)) {
+      decimal = parseInt(trimmed, base)
+      valid = !isNaN(decimal)
+    }
+  }
 
   const results = valid ? [
     { label: 'Binary (2)', value: decimal.toString(2) },
