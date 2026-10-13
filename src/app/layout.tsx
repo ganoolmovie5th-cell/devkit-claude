@@ -40,6 +40,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="apple-touch-icon" href="/icon-192.svg" />
         <link rel="alternate" type="application/rss+xml" title="DevKit Blog" href="/feed.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'DevKit',
+              url: 'https://www.devkit.web.id',
+              logo: 'https://www.devkit.web.id/logo-512.png',
+            }),
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {/* Google Tag Manager (noscript) */}
